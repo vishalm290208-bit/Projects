@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe - C Project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 TIC TAC TOE</h1>
+            <p>Player vs AI / Player vs Player • 3x3 or 4x4 • Windows Optimized</p>
+        </div>
+
+        <div id="menu" class="menu active">
+            <div class="menu-item">
+                <label>Mode:</label>
+                <select id="mode">
+                    <option value="1">1) Player vs AI</option>
+                    <option value="2">2) Player vs Player</option>
+                </select>
+            </div>
+            <div class="menu-item">
+                <label>Grid:</label>
+                <select id="size">
+                    <option value="3">1) 3x3</option>
+                    <option value="4">2) 4x4</option>
+                </select>
+            </div>
+            <div id="difficulty-section">
+                <div class="menu-item">
+                    <label>Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="1">1) Easy</option>
+                        <option value="2">2) Medium</option>
+                        <option value="3">3) Hard</option>
+                        <option value="4">4) Advanced</option>
+                    </select>
+                </div>
+            </div>
+            <button id="start" class="btn-start">START GAME</button>
+        </div>
+
+        <div id="game" class="game hidden">
+            <div class="status">
+                <div id="status-text">Player X turn</div>
+                <div id="timer" class="timer hidden">⏰ Time: 90s</div>
+            </div>
+            <div id="board-container" class="board-container">
+                <div id="board-instructions">Click numbered cells (1-9 or 1-16)</div>
+            </div>
+            <button id="new-game" class="btn-new">NEW GAME</button>
+        </div>
+
+        <div id="game-over" class="game-over hidden">
+            <h2 id="game-over-text"></h2>
+            <button id="play-again" class="btn-play-again">PLAY AGAIN</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

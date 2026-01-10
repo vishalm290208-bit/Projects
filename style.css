@@ -1,0 +1,268 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', monospace; }
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
+    color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container { max-width: 500px; width: 100%; }
+
+/* Header - Your C yellow welcome */
+.header {
+    text-align: center;
+    background: linear-gradient(90deg, #ff6b35, #f7931e);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(247, 147, 30, 0.4);
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.header h1 { 
+    color: #fff; 
+    font-size: 2.2em; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.header p { 
+    color: #fff9; 
+    font-size: 1em; 
+    background: rgba(0,0,0,0.4);
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* C-inspired Menu */
+.menu {
+    background: rgba(0,0,0,0.8);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #00d4ff;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(0,212,255,0.1);
+    border-radius: 10px;
+    border-left: 4px solid #00d4ff;
+}
+
+.menu-item label {
+    font-weight: bold;
+    color: #00d4ff;
+    min-width: 85px;
+    font-size: 1.1em;
+}
+
+.menu-item select {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #00d4ff;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.7);
+    color: #ffffff;
+    font-size: 1em;
+    font-family: inherit;
+}
+
+.btn-start {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(145deg, #f7931e, #ff6b35);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 20px rgba(247, 147, 30, 0.4);
+}
+
+.btn-start:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 12px 30px rgba(247, 147, 30, 0.6); 
+}
+
+/* Game */
+.game { text-align: center; }
+
+.status {
+    background: rgba(0,0,0,0.8);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #00ff88;
+}
+
+#status-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00ff88;
+    margin-bottom: 8px;
+}
+
+.timer {
+    color: #ffaa00;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+#board-instructions {
+    color: #00d4ff;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.board-container {
+    background: rgba(0,0,0,0.9);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    border: 3px solid #333;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+/* PERFECT GRID - NO COLOR CHANGES */
+#board.size-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    width: 330px !important;
+    height: 330px !important;
+    margin: 0 auto !important;
+}
+
+#board.size-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: repeat(4, 1fr) !important;
+    gap: 10px !important;
+    width: 360px !important;
+    height: 360px !important;
+    margin: 0 auto !important;
+}
+
+/* FIXED: NO COLOR CHANGES DURING PLAY */
+.cell {
+    background: #2a2a3a !important;
+    border: 3px solid #444 !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 2.5em !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    color: #ffffff !important;
+    transition: all 0.2s !important;
+    position: relative !important;
+    user-select: none !important;
+}
+
+.cell::before {
+    content: attr(data-loc);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7em;
+    color: rgba(255,255,255,0.4);
+    font-weight: normal;
+    transition: all 0.2s;
+    pointer-events: none;
+}
+
+.cell:not(:empty)::before {
+    opacity: 0;
+}
+
+/* ONLY TEXT COLOR - SAME BACKGROUND */
+.cell.X { color: #ff4757 !important; background: #2a2a3a !important; }
+.cell.O { color: #3742fa !important; background: #2a2a3a !important; }
+
+.cell:hover:not(:empty) {
+    transform: scale(0.95);
+    border-color: #666 !important;
+}
+
+.cell.win {
+    background: #00ff88 !important;
+    color: #000 !important;
+    border-color: #00ff88 !important;
+    box-shadow: 0 0 20px #00ff88 !important;
+    animation: winPulse 1s infinite;
+}
+
+@keyframes winPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.btn-new, .btn-play-again {
+    padding: 15px 35px;
+    background: linear-gradient(145deg, #00ff88, #00cc66);
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-new:hover, .btn-play-again:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,255,136,0.4);
+}
+
+.game-over {
+    background: rgba(0,0,0,0.95);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 3px solid #ff6b35;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    animation: popup 0.4s ease-out;
+}
+
+@keyframes popup {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.game-over h2 {
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    color: #ff6b35;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.hidden { display: none !important; }
+.active { animation: fadeIn 0.5s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 480px) {
+    #board.size-3 { width: 280px !important; height: 280px !important; gap: 10px !important; }
+    #board.size-4 { width: 300px !important; height: 300px !important; gap: 8px !important; }
+    .cell { font-size: 2em !important; }
+}
